@@ -90,7 +90,7 @@ Vamos bloquear todo o tráfego de fora do Brasil, mas permitir acesso a url que 
 ![add8](assets/img/008.png)
 ![add9](assets/img/009.png)
 
-#### Liberar certbot
+#### 1 Liberar certbot
 
 Coloque o nome: Liberar certbot
 
@@ -102,7 +102,7 @@ A ação é `Ignorar`. `Todas as regras personalizadas restantes`
 ![add10](assets/img/010.png)
 
 
-#### Bloquear acesso fora do Brasil
+#### 2 Bloquear acesso fora do Brasil
 
 Coloque o nome: Bloquear acesso fora do Brasil
 
@@ -110,7 +110,32 @@ Clique em editar expressão e adicione:
 ```txt
 (not ip.src.country eq "BR")
 ```
-A ação é `Bloquear`. Ela deve estar ativa e ser executada depois de `Liberar certbot` (`ùltimo`).
+A ação é `Bloquear`. Ela deve estar ativa e ser executada depois de `Liberar certbot` (`segunda`).
 
 ![add11](assets/img/011.png)
+
+#### 2 Desafio Página de notícias
+
+O objetivo é barrar acesso de bots que varrem páginas de notícias.
+
+Por análise de comportamento, o usuário legítimo dificilmente navega por diversas páginas.
+Então, caso seja solicitado navegação na página 10 ou maior, o acesso não será bloqueado, mas a cloudflare fará um verificação se o acesso é legítimo.
+
+
+Coloque o nome: Desafio Page Alto
+
+
+Clique em editar expressão e adicione:
+```txt
+len(http.request.uri.args["page"][0]) ge 2
+```
+A ação é `Desafio gerenciado`. Ela deve estar ativa e ser executada depois de `Bloquear acesso fora do Brasil` (`última`).
+
+![add15](assets/img/015.png)
+
+
+### RESUMO
+Resumo das regras personalizadas.
+
+![add16](assets/img/016.png)
 
