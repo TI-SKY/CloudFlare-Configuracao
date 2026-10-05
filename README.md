@@ -32,7 +32,7 @@ Caso falte algo, pode ser adicionado manualmente.
 
 - PROXY: O proxy (ícone laranja 🟠) precisa ser ativado para os domínios que apontam para o skybind. Não configure para outros registros que você não queira usar o proxy da CloudFlare, principalmente se você não sabe se a configuração é aceita.
 
-O site SkyBind está registrado em bindclientes.skyinformatica.inf.br.
+O site SkyBind está registrado em cfbindclientes.skyinformatica.inf.br.
 
 Esse domínio não pode ser registado em nenhum Hostname no WebServer do server SkyBind.
 
@@ -41,7 +41,7 @@ No server SkyBind só será aceito tráfego vindo da cloudflare.
 ### Altere ou faça os registros
 | Domínio | Tipo | Destino |
 |---|---|---|
-| `dominioparaositebind.com.br` | CNAME | `bindclientes.skyinformatica.inf.br` |
+| `dominioparaositebind.com.br` | CNAME | `cfbindclientes.skyinformatica.inf.br` |
 | `www.dominioparaositebind.com.br` | CNAME | `dominioparaositebind.com.br` |
 
 🔴 Se for usado um registro A apontando diretamente para o IP do skybind, caso o ip do server seja trocado futuramente, precisar ser alterado manualmente.
